@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
+
+:root{
+    --primary-color:linear-gradient(90deg, rgb(18, 92, 255) 0%, rgb(0,102,255) 100%);
+    --text-color:#fff;
+    background-color:black;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fruktur', cursive;
+    text-transform: uppercase;
+
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+/* header{
+    position: fixed;
+    top:5%;
+    right: 5%;
+} */
+
+.btn button{
+    border: none;
+    outline: none;
+    background: var(--primary-color);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+main{
+    position: fixed;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15vh;
+}
+
+.logo-box{
+    height: 230px;
+    width: 230px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation:pop 0.3s ease-in-out infinite alternate ;
+    letter-spacing: 3px;
+    color: #fcedd8;
+    background:#333;
+}
+
+.logo-box h4{
+    text-shadow:5px 5px 0px #eb452b,
+    10px 10px 0px #efa032;
+}
+
+.logo-box h1{
+    margin-top: -10px;
+    font-size: 5.3rem;
+    color: #fcedd8;
+    text-shadow:5px 5px 0px #eb452b,
+                10px 10px 0px #efa032,
+                15px 15px 0px #46b59b,
+                20px 20px 0px #017e7f,
+                25px 25px 0px #052939,
+                30px 30px 0px #c11a2b;
+}
+
+footer{
+    margin-top: 7rem;
+}
+
+
+.user-box input{
+    border: none;
+    outline: none;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.user-box .play-btn{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:2rem auto;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #fcedd8;
+    text-shadow:5px 5px 0px #eb452b,
+                10px 10px 0px #efa032,
+                15px 15px 0px #46b59b;
+    animation:pop 0.3s ease-in-out infinite alternate ;
+}
+
+@keyframes pop{
+    to{
+        transform: scale(1.3);
+    }
+}
+
+
+
+
