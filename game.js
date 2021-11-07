@@ -1,3 +1,5 @@
+let timeSec = document.querySelector(".seconds");
+const timeDOM = document.querySelector(".time");
 const question = document.querySelector(".question");
 const questionDOM = document.querySelector(".question-wrapper");
 const optionDOM = document.querySelector(".options-wrapper");
@@ -124,7 +126,8 @@ let score = 0;
 let currentQuestion;
 let availableQuestion = [];
 let availableOption = [];
-
+let time = 30;
+let timeShell;
 sessionStorage.setItem("score",score)
 
 function setAvailableQuestion() {
@@ -145,11 +148,14 @@ function showQuestions(){
 
     question.innerHTML = `<h2>${questionCount + 1}. ${currentQuestion.question}</h2>`;
 
-    const indexNumber = availableQuestion.indexOf(randomQuestion)
+    const indexNumber = availableQuestion.indexOf(randomQuestion);
    
     availableQuestion.splice(indexNumber,1)
 
     const optionLen = currentQuestion.options.length
+
+    //clearInterval(time)
+    timer(time)
 
 
         let html = `
@@ -185,6 +191,7 @@ function showQuestions(){
         const options = document.querySelectorAll(".option");
         options.forEach(option => {
            option.addEventListener("click", function(){
+               clearInterval(timeShell)
             
               const userAnswer = option.innerHTML;
               const correctAnswer = currentQuestion.answer
@@ -204,10 +211,10 @@ function showQuestions(){
            })
         })
 
+       
+
         function disable(){
             optionDOM.classList.add("disabled")
-        //     const options = document.querySelectorAll(".option"); 
-        //    options.classList.add("disabled")
             
         }
 
@@ -215,25 +222,51 @@ function showQuestions(){
 
 
 
+function timer(index) {
+    
+    timeShell = setInterval(countdown,1000);
+
+    function countdown(){
+        timeSec.innerText = index;
+        index--;
+
+        if(index < 9){
+            timeSec.innerText = `0${timeSec.innerText}`
+        }
+        
+        if(index < 0){
+            clearInterval(timeShell)
+            showQuestions()
+        }
+    }
+    
+}
+
+
 nextBtn.addEventListener("click", nextQuestion)
 function nextQuestion() {
     if (questionCount === questions.length) {
         location.href = "end.html"
-        console.log("the end");
-        console.log(score);
+        
     }
     else{
+       
         showQuestions()
+        clearInterval(timeShell)
+        timer(time)
         optionDOM.classList.remove("disabled")
 
     }
 
-
 }
 
+
 window.addEventListener("DOMContentLoaded", function(){
+    alert(`RULES \n1.You have 30 seconds for each questions\n2.And ${sessionStorage.getItem("name").toUpperCase()} remember to have fun while playing`)
     setAvailableQuestion()
     showQuestions()
+    clearInterval(timeShell)
+    timer(time)
 
     
 })
